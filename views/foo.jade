@@ -1,0 +1,53 @@
+doctype html
+html(lang="en")
+  head
+    title Tournament
+  body.
+    
+  .new_tournament
+    h3.tournament_name All-Childrens Hospital Benefit Tournament
+    ul.tournment_stats
+      li.tournament_location Location:  Lake Kissemmee, Lake Wales, FL
+      li.tournament_ramp Ramp Name/Location: Camp Mack Resort Ramp
+      li.tournament_date Date: 4/18/2015 
+    button.entryformbtn Submit
+
+  .create_tournament
+    h3 New Tournament Details
+    ol.tournment_details
+      li.participant Jeff Beck 23.14 lbs
+      li.participant Name 2 22.14lbs lbs
+      li.participant Name 3 21.14lbs lbs
+      li.participant Name 4 20.14lbs lbs
+      li.participant Name 5 19.14lbs lbs
+      li.participant Name 6 18.14lbs lbs
+      li.participant Name 7 17.14lbs lbs
+    button.entryformbtn Home
+
+
+  .join_tournament
+    ul.tournment_lists
+      li.tournaments_list
+        a(class="join_link" href="#") All-Childrens Hospital Benefit Tournament - Kissimmee Chain of Lake, Lake Wales, FL 4/18/2015
+      li.tournaments_list
+        a(class="join_link" href="#") Legoland Tournament - Winter Haven Chain of Lakes, Winter Haven FL 4/25/2015
+      li.tournaments_list 
+        a(class="join_link" href="#") Another Tournament Harris Chain of Lakes, Tavares FL 5/2/2015
+    button(class="create_button" href="#") Add Tournament
+
+
+  .entry
+  .username Name from twitter Login
+  h3 Enter In Your Stats Below!
+  form.entryform
+    p Checkin Time: 
+      input(type="time" name="checkintime")
+    p Total Fish: 
+      input(type="number" name="totalfish")
+    p Total Wieght:
+      input(type="number" name="totalwieght")
+    p Dead Fish ?:
+      input(type="checkbox" name="deadfish")
+    p Big Fish Wieght:
+      input(type="" name="totalwieght")
+    button(type="submit" className="entryformbtn") Submit   

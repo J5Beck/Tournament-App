@@ -1,0 +1,24 @@
+extends layouts/main.jade
+
+block title
+  title Entry Form
+
+block head
+
+block content
+  body.
+  .entry
+  .username Login Name
+  h3 Enter In Your Stats Below!
+  form.entryform
+    p Checkin Time: 
+      input(type="text" name="checkintime")
+    p Total Fish: 
+      input(type="text" name="totalfish")
+    p Total Wieght:
+      input(type="text" name="totalwieght")
+    p Dead Fish ?:
+      input(type="checkbox" name="deadfish")
+    p Big Fish Weight:
+      input(type="text" name="totalwieght")
+    button(type="submit" className="entryformbtn") Submit 

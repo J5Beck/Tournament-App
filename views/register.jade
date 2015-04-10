@@ -1,0 +1,19 @@
+extends layouts/main.jade
+
+block title
+  title Register Screen
+
+block head
+
+block content
+  .registercontainer
+    h3 Register
+    form.registrationform(method="POST" action="")
+      p Email:
+        input(type="text" name="email")
+      p Username: 
+        input(type="text" name="username")
+      p Password: 
+        input(type="password" name="password")
+
+      button(type="submit" className="registerbutton") Submit 

@@ -1,0 +1,20 @@
+extends layouts/main.jade
+
+block title
+  title Sign In Screen
+
+block head
+
+block content
+ 
+  .signin
+    h3 Sign in to Enter
+    form.signinform(method="POST" action="")
+      p Email: 
+        input(type="text" name="email")
+      p Password: 
+        input(type="text" name="password")
+
+      button(type="submit" className="loginbutton") Submit 
+      .register_button 
+        a(class="register_link" href="/register") Register
