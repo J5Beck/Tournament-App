@@ -18,6 +18,11 @@ var tournamentDB = new Datastore({
   autoload: true 
 });
 
+var entryDB = new Datastore({ 
+  filename: 'db/entries', 
+  autoload: true 
+});
+
 app.use(express.static('public'));
 
 app.use(session({
@@ -45,7 +50,26 @@ app.get("/", function(req, res) {
 
     if (req.session.currentUser.tournament_id) {
       // user has a tournament
-      res.send("enter your data for entry");
+      
+      var qry = {
+        tournament_id: req.session.currentUser.tournament_id,
+        user_id: req.session.currentUser._id
+      };
+
+      entryDB.findOne(qry, function(err, entry){
+        if (entry) {
+          // user has entry
+          
+          res.send("should now be looking at results");
+
+        } else {
+          // user has not entered results for tournament
+          res.render("entry", {
+            tournament_id: req.session.currentUser.tournament_id
+          });
+        }
+      });
+      
     }
     else {
       // user does not have a tournament
@@ -129,6 +153,25 @@ app.post("/register", function(req, res) {
 // app.get("/profile", function(req, res) {
 //   res.render("profile");
 // });
+
+app.post("/tournaments/:id/entry", function(req, res){
+  if (req.session.currentUser) {
+    var uid = req.session.currentUser._id;
+    var tid = req.params.id;
+
+    var entry = req.body;
+    
+    entry.user_id = uid;
+    entry.tournament_id = tid;
+
+    entryDB.insert(entry, function(err){
+      res.redirect("/");
+    });
+  
+  } else {
+    res.redirect("/signin");
+  }
+});
 
 app.get("/tournaments/:id/join", function(req, res){
   if (req.session.currentUser) {

@@ -10,7 +10,7 @@ block content
   .entry
   .username Login Name
   h3 Enter In Your Stats Below!
-  form.entryform
+  form.entryform(method="POST" action="/tournaments/#{tournament_id}/entry")
     p Checkin Time: 
       input(type="text" name="checkintime")
     p Total Fish: 
