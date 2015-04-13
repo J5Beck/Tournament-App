@@ -168,6 +168,8 @@ app.post("/tournaments/:id/entry", function(req, res){
     var tid = req.params.id;
 
     var entry = req.body;
+
+    entry.total_weight = parseFloat(entry.total_weight);
     
     entry.user_id = uid;
     entry.tournament_id = tid;
@@ -259,7 +261,7 @@ function tournamentResults(tid, cb) {
     });
 
     // get entries
-    entryDB.find({tournament_id: tid}).sort({ total_wieght: -1 }).exec(function(err, records){
+    entryDB.find({tournament_id: tid}).sort({ total_weight: -1 }).exec(function(err, records){
       entries = records;
       if (users) {
         cb( calculate() );

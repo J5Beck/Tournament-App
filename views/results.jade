@@ -5,25 +5,51 @@ block title
 
 block head
 
-block content
-  body.
+block container
+  block navbar
+    .signout_button
+      a(class="logoff_button" href="/signout") Logoff
   .tournament_results
     h3= tournament.name + " Results"
     
     h4 Results
-    ol.results_list
-      each entry in results
-        li.participant
-          .entry
-            strong Username
-            span= entry.user.username
-            strong Total Weight
-            span= entry.total_weight
-
+    table.table_results
+      thead.thead_results
+        tr.thead_row_results
+          th Place
+          th Name
+          th # Fish
+          th Lbs.
+          th Deductions
+          th Tot. Lbs.
+      tbody.tbody_results
+        each entry, index in results
+          - var className = (entry.user._id === currentUser._id) ? "tbody_results current_user" : "tbody_results";
+          tr(class=className)
+            td= index + 1
+            td= entry.user.username
+            td= entry.total_fish
+            td= entry.total_weight
+            td
+            td= entry.total_weight
 
     h4 Users Yet To Enter
     ul.pending_list
       each user in pendingUsers
-        li.participant= user.username
+        - var className = (user._id === currentUser._id) ? "participant current_user" : "participant";
+        li(class=className)= user.username
+
+block content
+    //- ol.results_list
+    //-   each entry in results
+    //-     li.participant
+    //-       .entry
+    //-         strong Username 
+    //-         span= entry.user.username 
+    //-         strong Total Weight 
+    //-         span= entry.total_weight 
+
+
+
 
 
