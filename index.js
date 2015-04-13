@@ -5,6 +5,7 @@ var session = require('express-session');
 var bodyParser = require("body-parser");
 var Datastore = require('nedb');
 var md5 = require("MD5");
+var _ = require("underscore");
 
 var app = express();
 
@@ -59,8 +60,15 @@ app.get("/", function(req, res) {
       entryDB.findOne(qry, function(err, entry){
         if (entry) {
           // user has entry
-          
-          res.send("should now be looking at results");
+
+          var tid = req.session.currentUser.tournament_id;
+          tournamentResults(tid, function(data){
+
+            data.currentUser = req.session.currentUser;
+
+            res.render("results", data);
+
+          });
 
         } else {
           // user has not entered results for tournament
@@ -232,6 +240,57 @@ app.post("/tournaments/new", function(req, res) {
   }
 
 });
+
+
+function tournamentResults(tid, cb) {
+  var tournament;
+  var users;
+  var entries;
+
+  tournamentDB.findOne({_id: tid}, function(err, record){
+    tournament = record;
+
+    // get users
+    userDB.find({tournament_id: tid}, function(err, records){
+      users = records;
+      if (entries) {
+        cb( calculate() );
+      }
+    });
+
+    // get entries
+    entryDB.find({tournament_id: tid}).sort({ total_wieght: -1 }).exec(function(err, records){
+      entries = records;
+      if (users) {
+        cb( calculate() );
+      }
+    });
+
+  });
+
+  function calculate() {
+    var results = _.map(entries, function(entry){
+      entry.user = _.find(users, function(user){
+        return user._id === entry.user_id
+      });
+      return entry;
+    });
+
+    var userIDsWhoHaveEntered = _.map(results, function(result){
+      return result.user._id;
+    });
+
+    var pendingUsers = _.filter(users, function(user){
+      return !_.contains(userIDsWhoHaveEntered, user._id);
+    });
+
+    return {
+      tournament: tournament,
+      results: results,
+      pendingUsers: pendingUsers
+    }
+  }
+}
 
 // app.get("/tournaments/results", function(req, res) {
 //   res.render("results");
