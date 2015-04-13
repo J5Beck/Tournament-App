@@ -1,7 +1,3 @@
-//- doctype html
-//- html(lang="en")
-//-   head
-//-     title Tournament
 extends layouts/main.jade
 
 block title
@@ -9,13 +5,24 @@ block title
 
 block head
 
-block content
-  body.
+block container
+  h1.
+
   .new_tournament
-    h3.tournament_name All-Childrens Hospital Benefit Tournament
-    ul.tournment_stats
-      li.tournament_location Location:  Lake Kissemmee, Lake Wales, FL
-      li.tournament_ramp Ramp Name/Location: Camp Mack Resort Ramp
-      li.tournament_date Date: 4/18/2015 
-    button.entryformbtn Submit
-        
+    h3.tournament_name Create A New Tournament
+    form.new_tournament_form(method="POST" action="/tournaments/new")
+      p Tournament Name:  
+        input(type="text" name="name" style="width: 600px;")
+      p Lake:  
+        input(type="text" name="lake" style="width: 700px;")
+      p Ramp Location:  
+        input(type="text" name="ramp_location" style="width: 626px;") 
+      p Date:  
+        input(type="text" name="date") 
+      p Blast Off Time:  
+        input(type="text" name="blast_off_time")
+      button(type="submit" className="createTourButton") Create Tournament 
+
+block content
+
+block footer

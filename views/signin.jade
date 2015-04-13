@@ -3,18 +3,25 @@ extends layouts/main.jade
 block title
   title Sign In Screen
 
-block head
+block container
+  h1.
+    Braggin' Rights
+  h2.
+    "A Reel Life" Fishing Tournament App     
+
+  .signin
+    h3 Sign in to Enter
+    form.signinform(method="POST" action="/signin")
+      p Email: 
+        input(class="emailinput" type="text" name="email" style="width: 225px;")
+      p Password: 
+        input(type="text" name="password" style="width: 195px;")
+
+      button(type="submit" className="loginbutton") Submit 
+
+      p Please Register if you have not signed in before. <br />
+      .register_button 
+        a(class="register_link" href="/register") Register
 
 block content
  
-  .signin
-    h3 Sign in to Enter
-    form.signinform(method="POST" action="")
-      p Email: 
-        input(type="text" name="email")
-      p Password: 
-        input(type="text" name="password")
-
-      button(type="submit" className="loginbutton") Submit 
-      .register_button 
-        a(class="register_link" href="/register") Register

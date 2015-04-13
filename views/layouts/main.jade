@@ -7,24 +7,28 @@ html
 
     link(rel="stylesheet", href="/css/main.css")
     link(rel="stylesheet" href="/vendor/css/vendor.css")
-    link(href='http://fonts.googleapis.com/css?family=Trade+Winds|Roboto' rel='stylesheet' type='text/css')
+    link(href='http://fonts.googleapis.com/css?family=Trade+Winds|Smokum|Federant|Passero+One|Roboto' rel='stylesheet' type='text/css')
 
-    script(src="jquery.js")
-    script(src="underscore.js")
-    script(src="backbone.js")
-    script(src="models.js")
     block head
 
   body
-    .notice= notice
 
     .container
-      h1.
-        Braggin' Rights
-      img(src="/images/p1_extra_BMM_Parting_Aug10.jpg")
       .navbar
+
+        block navbar
         .login
-    .overlay
-      .sign-in-out
+          .notice= notice
+      block container      
+
+      //- img(src="/images/p1_extra_BMM_Parting_Aug10.jpg")
+      .bottom
 
     block content
+
+
+  footer
+    .footer.
+
+        stuff to see what it looks like
+    block footer

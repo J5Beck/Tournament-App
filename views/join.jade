@@ -1,19 +1,17 @@
 extends layouts/main.jade
 
 block title
-  title Join
-
-block head
+  title Join A Tournament
 
 block content
-  .overlay
-    img(src="/public/images/p1_extra_BMM_Parting_Aug10.jpg")
-    .join_tournament
-      ul.tournment_lists
+  h1.
+    Braggin' Rights
+  h2.
+    "A Reel Life" Fishing Tournament App
+  .join_tournament
+    .new_tournament_button
+      a(class="create_button" href="/tournaments/new") New
+    ul.tournment_lists
+      each tournament in tournaments
         li.tournaments_list
-          a(class="join_link" href="/user/entry") All-Childrens Hospital Benefit Tournament - Kissimmee Chain of Lake, Lake Wales, FL 4/18/2015
-        li.tournaments_list
-          a(class="join_link" href="#") Legoland Tournament - Winter Haven Chain of Lakes, Winter Haven FL 4/25/2015
-        li.tournaments_list 
-          a(class="join_link" href="#") Another Tournament Harris Chain of Lakes, Tavares FL 5/2/2015
-      button(class="create_button" href="#") Add Tournament
+          a(class="join_link" href="/tournaments/#{tournament._id}/join")= tournament.name

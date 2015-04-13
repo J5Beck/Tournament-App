@@ -13,6 +13,11 @@ var userDB = new Datastore({
   autoload: true 
 });
 
+var tournamentDB = new Datastore({ 
+  filename: 'db/tournaments', 
+  autoload: true 
+});
+
 app.use(express.static('public'));
 
 app.use(session({
@@ -36,7 +41,24 @@ app.get("/", function(req, res) {
 
   if (req.session.currentUser) {
     // logged in
-    res.send("hey there" + req.session.currentUser.username);
+    // res.send("hey there" + req.session.currentUser.username);
+
+    if (req.session.currentUser.tournament_id) {
+      // user has a tournament
+      res.send("enter your data for entry");
+    }
+    else {
+      // user does not have a tournament
+      tournamentDB.find({}, function(err, tournaments){
+
+        res.render("join", {
+          tournaments: tournaments,
+          currentUser: req.session.currentUser
+        });
+
+      });
+    }
+
   } else {
     // not logged in
     res.redirect("/signin");
@@ -65,6 +87,12 @@ app.post("/signin", function(req, res) {
     }
   });
 
+});
+
+app.get("/signout", function(req, res){
+  req.session.destroy(function(err) {
+    res.redirect("/");
+  })
 });
 
 app.get("/register", function(req, res) {
@@ -98,29 +126,87 @@ app.post("/register", function(req, res) {
 
 });
 
-app.get("/profile", function(req, res) {
-  res.render("profile");
+// app.get("/profile", function(req, res) {
+//   res.render("profile");
+// });
+
+app.get("/tournaments/:id/join", function(req, res){
+  if (req.session.currentUser) {
+    // what user we are changing
+    var qry = {
+      _id: req.session.currentUser._id
+    }
+
+    // set tournament id on user
+    req.session.currentUser.tournament_id = req.params.id;
+
+    // what changs we are making
+    var changes = req.session.currentUser;
+
+    // update the user
+    userDB.update(qry, changes, {}, function(err){
+      res.redirect("/");
+    });
+  } else {
+    res.redirect("/signin");
+  }
 });
 
 app.get("/tournaments/new", function(req, res) {
   res.render("new_tournament");
 });
 
-app.get("/tournaments/results", function(req, res) {
-  res.render("results");
+app.post("/tournaments/new", function(req, res) {
+  
+  if (req.session.currentUser) {
+    // validate data
+    // .. just kidding
+
+    // insert new tournament
+    tournamentDB.insert(req.body, function(err, newTournament){
+      // get tournament id and set it on user
+      var tid = newTournament._id;
+
+      // what user we are changing
+      var qry = {
+        _id: req.session.currentUser._id
+      }
+
+      // set tournament id on user
+      req.session.currentUser.tournament_id = tid;
+
+      // what changs we are making
+      var changes = req.session.currentUser;
+
+      // update the user
+      userDB.update(qry, changes, {}, function(err){
+        res.redirect("/");
+      });
+    });
+
+  } else {
+    res.redirect("/signin");
+  }
+
 });
 
-app.get("/user/entry", function(req, res) {
-  res.render("entry");
-});
+// app.get("/tournaments/results", function(req, res) {
+//   res.render("results");
+// });
 
-app.get("/user/join", function(req, res) {
-  res.render("join");
-});
+// app.get("/user/entry", function(req, res) {
+//   res.render("entry");
+// });
 
-app.get("/foo", function(req, res) {
-  res.render("foo");
-});
+// app.get("/user/join", function(req, res) {
+//   res.render("join", {
+//     tournaments: []
+//   });
+// });
+
+// app.get("/foo", function(req, res) {
+//   res.render("foo");
+// });
 
 var port = process.env.PORT || 8025;
 console.log("Listening on port", port);
