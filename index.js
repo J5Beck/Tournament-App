@@ -293,16 +293,22 @@ function tournamentResults(tid, cb) {
   });
 
   function calculate() {
-    var results = _.map(entries, function(entry){
+    var results = _.compact(_.map(entries, function(entry){
       entry.user = _.find(users, function(user){
         return user._id === entry.user_id
       });
+      if (!entry.user) {
+        return null;
+      }
       return entry;
-    });
+    }));
 
-    var userIDsWhoHaveEntered = _.map(results, function(result){
+    var userIDsWhoHaveEntered = _.compact(_.map(results, function(result){
+      if (!result.user) {
+        return null;
+      }
       return result.user._id;
-    });
+    }));
 
     var pendingUsers = _.filter(users, function(user){
       return !_.contains(userIDsWhoHaveEntered, user._id);

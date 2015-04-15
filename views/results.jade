@@ -12,6 +12,8 @@ block container
     .signout_button
       i(class="fa fa-sign-out" href="/signout")
       a(class="logoff_button" href="/signout") Logoff
+  .tournament_pictures
+        
   .tournament_results
     h3= tournament.name + " Results"
     
@@ -36,11 +38,14 @@ block container
             td(style="width: 10%") 
             td(style="width: 15%")= entry.total_weight
 
-    h4 Users Yet To Enter
+    h4 Participants Yet To Enter
     ul.pending_list
       each user in pendingUsers
         - var className = (user._id === currentUser._id) ? "participant current_user" : "participant";
         li(class=className)= user.username
+    h5
+      i(class="fa fa-sign-out" href="/tournaments/leave")
+      a(class="leave_button" href="/tournaments/leave") Leave Tournament
 
 block content
 

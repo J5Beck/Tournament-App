@@ -89,27 +89,85 @@ body {
     }
   }
   .new_tournament {
-    display: block;
+    width: 100%;
+    height: 500px;
     margin: 0 auto;
-    z-index: -1;
-    padding-bottom: 10px;
-    text-align: center;
-    width: 800px;
-    height: 400px;
-    background: transparent;
-    border: 1px;
-    border-style: inset;
-    border-radius: 8px;
-    opacity: .9;
     h3 {
-      font-size: 2em;
-      font-family: 'Federant', serif;
+      text-align: center;
     }
-    p { 
-      text-align: left;
-      padding-left: 25px;
+    .new_tournament_form {
+      position: relative;
+      height: auto;
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+      top: 120px;
+      margin-bottom: 200px;
+      border: 1px solid;
+      padding-left: 15px;
+      border-style: inset;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.5);
+      h3 {
+        font-size: 2em;
+        font-family: 'Federant', serif;
+        text-align: center;
+      }
+      p { 
+        text-align: left;
+        padding-left: 25px;
+      }
+      button {
+        margin-bottom: 10px;
+      }  
     }
   }
+  .registercontainer {
+    width: 100%;
+    height: 500px;
+    margin: 0 auto;
+    .registrationform {
+      position: relative;
+      height: auto;
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+      top: 120px;
+      margin-bottom: 200px;
+      border: 1px solid;
+      padding-left: 15px;
+      border-style: inset;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+  }
+  .entry {
+    width: 100%;
+    height: 450px;
+    margin: 0 auto;
+    h3 {
+      text-align: center;
+    }
+    button {
+      margin-bottom: 10px;
+    }
+    .entryform {
+      position: relative;
+      height: auto;
+      width: 30%;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      top: 90px;
+      margin-bottom: 200px;
+      border: 1px solid;
+      padding-left: 15px;
+      border-style: inset;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
   .join_container {
     width: 100%;
     height: 500px;
@@ -173,13 +231,15 @@ body {
       text-shadow: 3px 3px 1px #1387AD;
       z-index: 1;
       display: inline-block;
+      float: left;
     }
     .signout_button {
+      position: relative;
       padding-top: 15px;
       padding-right: 20px;
       float: right;
       display: inline-block;
-      color: rgb(202, 229, 237);
+      color: #cae5ed;
       i {
         font-size: 2em;
       }
@@ -189,22 +249,42 @@ body {
       }
     }
   }
+  // .tournament_pictures {
+  //   position: relative;
+  //   table-layout: auto;
+  //   height: auto;
+  //   width: 70%;
+  //   margin-left: auto;
+  //   margin-right: auto;
+  //   top: 120px;
+  //   margin-bottom: 200px;
+  // }
   .tournament_results {
-  position: relative;
-  table-layout: auto;
-  height: auto;
-  width: 70%;
-  margin-left: auto;
-  margin-right: auto;
-  top: 120px;
-  margin-bottom: 200px;
-  border: 1px solid;
-  padding-left: 15px;
-  border-style: inset;
-  border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.5);
-  td, th {
+    position: relative;
+    table-layout: auto;
+    height: auto;
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+    top: 120px;
+    margin-bottom: 200px;
+    border: 1px solid;
+    padding-left: 15px;
+    border-style: inset;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.5);
+    td, th, h3 {
     text-align: center;
+  }
+  h5 {
+    text-align: center;
+    .leave_button {
+      text-decoration: none;
+      color: black;
+      :hover {
+        background-color: orange;
+      }
+    }
   }
 
   .current_user {

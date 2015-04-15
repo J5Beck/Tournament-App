@@ -6,27 +6,27 @@ block title
 block head
 
 block container
-    block navbar
+  block navbar
     h4.
       Braggin' Rights
     .signout_button
       i(class="fa fa-sign-out" href="/signout")
       a(class="logoff_button" href="/signout") Logoff  
   .entry
-  .username Login Name
-  h3 Enter In Your Stats Below!
-  form.entryform(method="POST" action="/tournaments/#{tournament_id}/entry")
-    p Checkin Time: 
-      input(type="text" name="checkin_time")
-    p Total Fish: 
-      input(type="text" name="total_fish")
-    p Total Wieght:
-      input(type="text" name="total_weight")
-    p Dead Fish ?:
-      input(type="checkbox" name="dead_fish")
-    p Big Fish Weight:
-      input(type="text" name="big_fish")
-    button(type="submit" className="entryformbtn") Submit 
+    .username
+    h3 Enter In Your Stats Below!
+    form.entryform(method="POST" action="/tournaments/#{tournament_id}/entry")
+      p Checkin Time: 
+        input(type="text" name="checkin_time")
+      p Total Fish: 
+        input(type="text" name="total_fish")
+      p Total Wieght:
+        input(type="text" name="total_weight")
+      p Dead Fish ?:
+        input(type="checkbox" name="dead_fish")
+      p Big Fish Weight:
+        input(type="text" name="big_fish")
+      button(type="submit" className="entryformbtn") Submit 
 
 block footer
   h4 "A Reel Life" Fishing Tournament App
