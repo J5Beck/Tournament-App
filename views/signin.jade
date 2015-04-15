@@ -7,21 +7,27 @@ block container
   h1.
     Braggin' Rights
   h2.
-    A "Reel Life" Fishing Tournament App     
+    A &nbsp<i>"Reel Life"</i>&nbsp Fishing Tournament App     
 
   .signin
     h3 Sign in to Enter
     form.signinform(method="POST" action="/signin")
-      p Email: 
-        input(class="emailinput" type="text" name="email" style="width: 225px;")
-      p Password: 
-        input(type="text" name="password" style="width: 195px;")
+      .emailbox
+        p Email: 
+          input(class="emailinput" type="text" name="email" style="width: 225px;")
+      .passwordbox      
+        p Password: 
+          input(type="password" name="password" style="width: 195px;")
 
-      button(type="submit" className="loginbutton") Submit 
+      button(type="submit" className="loginbutton") Submit
 
-      p Please Register if you have not signed in before. <br />
+      p 
       .register_button 
-        a(class="register_link" href="/register") Register
+        a(class="register_link" href="/register") If you have not signed in before, please click here to Register.
 
 block content
+
+
+block footer
+
  

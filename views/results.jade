@@ -7,7 +7,10 @@ block head
 
 block container
   block navbar
+    h4.
+      Braggin' Rights
     .signout_button
+      i(class="fa fa-sign-out" href="/signout")
       a(class="logoff_button" href="/signout") Logoff
   .tournament_results
     h3= tournament.name + " Results"
@@ -16,22 +19,22 @@ block container
     table.table_results
       thead.thead_results
         tr.thead_row_results
-          th Place
-          th Name
-          th # Fish
-          th Lbs.
-          th Deductions
-          th Tot. Lbs.
+          th(style="width: 10%") Place
+          th(style="width: 40%") Name
+          th(style="width: 10%") # Fish
+          th(style="width: 15%") Lbs.
+          th(style="width: 10%") Deductions
+          th(style="width: 15%") Tot. Lbs.
       tbody.tbody_results
         each entry, index in results
           - var className = (entry.user._id === currentUser._id) ? "tbody_results current_user" : "tbody_results";
           tr(class=className)
-            td= index + 1
-            td= entry.user.username
-            td= entry.total_fish
-            td= entry.total_weight
-            td
-            td= entry.total_weight
+            td(style="width: 10%")= index + 1
+            td(style="width: 40%")= entry.user.username
+            td(style="width: 10%")= entry.total_fish
+            td(style="width: 15%")= entry.total_weight
+            td(style="width: 10%") 
+            td(style="width: 15%")= entry.total_weight
 
     h4 Users Yet To Enter
     ul.pending_list
@@ -40,6 +43,9 @@ block container
         li(class=className)= user.username
 
 block content
+
+block footer
+  h4 "A Reel Life" Fishing Tournament App
     //- ol.results_list
     //-   each entry in results
     //-     li.participant

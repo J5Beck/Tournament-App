@@ -3,15 +3,21 @@ extends layouts/main.jade
 block title
   title Join A Tournament
 
-block content
-  h1.
-    Braggin' Rights
-  h2.
-    "A Reel Life" Fishing Tournament App
-  .join_tournament
-    .new_tournament_button
-      a(class="create_button" href="/tournaments/new") New
-    ul.tournment_lists
-      each tournament in tournaments
-        li.tournaments_list
-          a(class="join_link" href="/tournaments/#{tournament._id}/join")= tournament.name
+block container
+  block navbar
+    h4.
+      Braggin' Rights
+    .signout_button
+      i(class="fa fa-sign-out" href="/signout")
+      a(class="logoff_button" href="/signout") Logoff
+
+  .join_container    
+    .join_tournament
+      .new_tournament_button
+        a(class="create_button" href="/tournaments/new") Add New Tournament
+      ul.tournment_lists - OR - <br><br> <strong>Select from the list of Existing Tournaments Below</strong><br>
+        each tournament in tournaments
+          li.tournaments_list
+            a(class="join_link" href="/tournaments/#{tournament._id}/join")= tournament.name
+block footer
+  h4 "A Reel Life" Fishing Tournament App

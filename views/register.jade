@@ -6,6 +6,12 @@ block title
 block head
 
 block content
+    block navbar
+    h4.
+      Braggin' Rights
+    .signout_button
+      i(class="fa fa-sign-out" href="/signout")
+      a(class="logoff_button" href="/signout") Logoff  
   .registercontainer
     h3 Register
     form.registrationform(method="POST" action="/register")
@@ -17,3 +23,6 @@ block content
         input(type="password" name="password")
 
       button(type="submit" className="registerbutton") Submit 
+
+block footer
+  h4 "A Reel Life" Fishing Tournament App

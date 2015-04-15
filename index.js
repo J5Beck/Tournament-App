@@ -205,6 +205,28 @@ app.get("/tournaments/:id/join", function(req, res){
   }
 });
 
+app.get("/tournaments/leave", function(req, res){
+  if (req.session.currentUser) {
+    // what user we are changing
+    var qry = {
+      _id: req.session.currentUser._id
+    }
+
+    // set tournament id on user
+    req.session.currentUser.tournament_id = null;
+
+    // what changs we are making
+    var changes = req.session.currentUser;
+
+    // update the user
+    userDB.update(qry, changes, {}, function(err){
+      res.redirect("/");
+    });
+  } else {
+    res.redirect("/signin");
+  }
+});
+
 app.get("/tournaments/new", function(req, res) {
   res.render("new_tournament");
 });

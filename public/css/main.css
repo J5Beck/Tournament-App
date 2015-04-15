@@ -35,8 +35,8 @@ body .container h2 {
   display: inline-block;
   color: #C8BB9D;
   padding-top: 0%;
-  padding-left: 17%;
-  padding-right: 17%;
+  padding-left: 16%;
+  padding-right: 16%;
   text-align: center;
 }
 body .container .signin {
@@ -50,12 +50,14 @@ body .container .signin {
   border: 2px;
   border-style: inset;
   border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.4);
 }
 body .container .signin button {
   width: 75px;
-  height: 20px;
-  border-radius: 5px;
+  height: 25px;
+  border-radius: 3px;
+  font-size: 12px;
+  color: darkblue;
 }
 body .container .signin h3 {
   padding-top: 5px;
@@ -68,17 +70,17 @@ body .container .signin p {
 body .container .signin .register_button {
   display: inline-block;
   margin: 0 auto;
-  width: 75px;
-  height: 20px;
-  background-color: antiquewhite;
+  width: 275px;
+  height: 40px;
   text-align: center;
-  border: 1px solid darkgrey;
-  border-radius: 5px;
-  border-style: outset;
 }
 body .container .signin .register_button a {
   text-decoration: none;
-  font-size: .8em;
+  color: black;
+  font-size: 1em;
+}
+body .container .signin .register_button:hover {
+  text-shadow: 3px 3px 1px #d7e3e7;
 }
 body .container .new_tournament {
   display: block;
@@ -102,6 +104,47 @@ body .container .new_tournament p {
   text-align: left;
   padding-left: 25px;
 }
+body .container .join_container {
+  width: 100%;
+  height: 500px;
+  margin: 0 auto;
+}
+body .container .join_container .join_tournament {
+  position: relative;
+  height: auto;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  top: 120px;
+  margin-bottom: 200px;
+  border: 1px solid;
+  padding-left: 15px;
+  border-style: inset;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+body .container .join_container .join_tournament .new_tournament_button {
+  margin: 20px;
+  width: 175px;
+  height: 24px;
+  line-height: 1.5em;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #C8BA9C;
+  border-style: outset;
+}
+body .container .join_container .join_tournament .new_tournament_button a {
+  text-decoration: none;
+  color: black;
+}
+body .container .join_container .join_tournament li {
+  padding-top: 10px;
+  padding-left: 5px;
+  list-style: none;
+}
+body .container .join_container .join_tournament li :hover {
+  background-color: lightyellow;
+}
 body .container .navbar {
   position: fixed;
   width: 98.7%;
@@ -114,6 +157,31 @@ body .container .navbar {
 }
 body .container .navbar .login {
   padding-top: 1px;
+}
+body .container .navbar h4 {
+  font-family: 'Federant', serif;
+  font-style: italic;
+  font-size: 2em;
+  margin-top: 15px;
+  margin-left: 15px;
+  color: #C8BA9C;
+  text-shadow: 3px 3px 1px #1387AD;
+  z-index: 1;
+  display: inline-block;
+}
+body .container .navbar .signout_button {
+  padding-top: 15px;
+  padding-right: 20px;
+  float: right;
+  display: inline-block;
+  color: #cae5ed;
+}
+body .container .navbar .signout_button i {
+  font-size: 2em;
+}
+body .container .navbar .signout_button a {
+  text-decoration: none;
+  color: #cae5ed;
 }
 body .container .tournament_results {
   position: relative;
@@ -130,6 +198,10 @@ body .container .tournament_results {
   border-radius: 8px;
   background-color: rgba(255, 255, 255, 0.5);
 }
+body .container .tournament_results td,
+body .container .tournament_results th {
+  text-align: center;
+}
 body .container .tournament_results .current_user {
   background: orange;
 }
@@ -143,14 +215,29 @@ body .container .bottom {
 }
 body footer {
   width: 100%;
-  height: 75px;
+  height: 40px;
   position: relative;
   bottom: 0;
   left: 0;
   background-color: #195F7A;
   border-top: 1px solid #777777;
-  color: #333;
-  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
+  color: #C9BB9D;
+  text-shadow: 1px 1px 0 #020201;
+}
+body footer i {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+body footer h4 {
+  font-family: 'Federant', serif;
+  font-style: italic;
+  font-size: 1.5em;
+  color: #C8BA9C;
+  text-shadow: 3px 3px 1px #1387AD;
+  z-index: 1;
+  display: inline-grid;
+  text-align: center;
+  margin-top: -11px;
 }
 body footer .footer {
   width: 100%;

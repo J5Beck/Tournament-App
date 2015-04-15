@@ -5,8 +5,13 @@ block title
 
 block head
 
-block content
-  body.
+block container
+    block navbar
+    h4.
+      Braggin' Rights
+    .signout_button
+      i(class="fa fa-sign-out" href="/signout")
+      a(class="logoff_button" href="/signout") Logoff  
   .entry
   .username Login Name
   h3 Enter In Your Stats Below!
@@ -22,3 +27,6 @@ block content
     p Big Fish Weight:
       input(type="text" name="big_fish")
     button(type="submit" className="entryformbtn") Submit 
+
+block footer
+  h4 "A Reel Life" Fishing Tournament App
